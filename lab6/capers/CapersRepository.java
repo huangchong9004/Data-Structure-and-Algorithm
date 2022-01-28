@@ -1,10 +1,11 @@
 package capers;
 
 import java.io.File;
+import java.io.IOException;
 import static capers.Utils.*;
 
 /** A repository for Capers 
- * @author TODO
+ * @author Chongwen Huang
  * The structure of a Capers Repository is as follows:
  *
  * .capers/ -- top level folder for all persistent data in your lab12 folder
@@ -18,7 +19,8 @@ public class CapersRepository {
     static final File CWD = new File(System.getProperty("user.dir"));
 
     /** Main metadata folder. */
-    static final File CAPERS_FOLDER = null; // TODO Hint: look at the `join`
+    static final File CAPERS_FOLDER = Utils.join(CWD,".capers");
+    //static final File CAPERS_FOLDER = null; // TODO Hint: look at the `join`
                                             //      function in Utils
 
     /**
@@ -32,6 +34,16 @@ public class CapersRepository {
      */
     public static void setupPersistence() {
         // TODO
+        File f = new File("story.text");
+        if (!f.exists()){
+            try {
+                f.createNewFile();
+            } catch(IOException excp) {
+                throw new IllegalArgumentException();
+            }
+        }
+        File d = new File(".capers/dogs");
+        d.mkdir();
     }
 
     /**
@@ -40,7 +52,16 @@ public class CapersRepository {
      * @param text String of the text to be appended to the story
      */
     public static void writeStory(String text) {
-        // TODO
+        File f = new File("Story.text");
+        String newText;
+        if (f.exists()) {
+            String original = Utils.readContentsAsString(f);
+            newText = original + text + "\n";
+        } else {
+            newText = text + "\n";
+        }
+        System.out.println(newText);
+        Utils.writeContents(f, newText);
     }
 
     /**

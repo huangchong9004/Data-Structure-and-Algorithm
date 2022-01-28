@@ -1,0 +1,3 @@
+class bstmap.BSTMap: 21.369sec
+Java's Built-in TreeMap: 14.885sec
+Java's Built-in TreeMap: 6.821sec

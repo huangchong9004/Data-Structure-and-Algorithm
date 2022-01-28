@@ -1,5 +1,8 @@
 package bstmap;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.TreeMap;
 import java.io.IOException;
@@ -15,6 +18,7 @@ public class InsertRandomSpeedTest {
         Requests user input and performs tests of three different set
         implementations. ARGS is unused.
     */
+
     public static void main(String[] args) throws IOException {
         Scanner input = new Scanner(System.in);
 
@@ -84,6 +88,16 @@ public class InsertRandomSpeedTest {
     public static void timeRandomMap61B(Map61B<String, Integer> map, int N, int L) {
         try {
             double mapTime = insertRandom(map, N, L);
+            String out = map.getClass() + ": " + mapTime + "sec\n";
+            try {
+                FileWriter myWriter = new FileWriter("speedTestResults.txt", true);
+                myWriter.write(out);
+                myWriter.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             System.out.printf(map.getClass() + ": %.2f sec\n", mapTime);
         } catch (StackOverflowError e) {
             printInfoOnStackOverflow(N, L);
@@ -100,6 +114,16 @@ public class InsertRandomSpeedTest {
     public static void timeRandomTreeMap(TreeMap<String, Integer> treeMap, int N, int L) {
         try {
             double javaTime = insertRandom(treeMap, N, L);
+            String out = "Java's Built-in TreeMap: " + javaTime + "sec\n";
+            try {
+                FileWriter myWriter = new FileWriter("speedTestResults.txt", true);
+                myWriter.write(out);
+                myWriter.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             System.out.printf("Java's Built-in TreeMap: %.2f sec\n", javaTime);
         } catch (StackOverflowError e) {
             printInfoOnStackOverflow(N, L);
@@ -116,6 +140,16 @@ public class InsertRandomSpeedTest {
     public static void timeRandomHashMap(HashMap<String, Integer> hashMap, int N, int L) {
         try {
             double javaTime = insertRandom(hashMap, N, L);
+            String out = "Java's Built-in TreeMap: " + javaTime + "sec\n";
+            try {
+                FileWriter myWriter = new FileWriter("speedTestResults.txt", true);
+                myWriter.write(out);
+                myWriter.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             System.out.printf("Java's Built-in HashMap: %.2f sec\n", javaTime);
         } catch (StackOverflowError e) {
             printInfoOnStackOverflow(N, L);
