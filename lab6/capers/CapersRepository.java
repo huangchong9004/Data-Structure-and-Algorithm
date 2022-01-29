@@ -34,7 +34,9 @@ public class CapersRepository {
      */
     public static void setupPersistence() {
         // TODO
-        File f = new File("story.text");
+        File f1 = new File(".capers");
+        f1.mkdir();
+        File f = new File(".capers/story.txt");
         if (!f.exists()){
             try {
                 f.createNewFile();
