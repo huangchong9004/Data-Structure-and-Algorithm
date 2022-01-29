@@ -1,5 +1,5 @@
-name:
-ingredients:
+name: Eggs
+ingredients: eggs, salt, oil
 recipe:
-prep:
+prep:break eggs and wait
 
