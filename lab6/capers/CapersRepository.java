@@ -54,7 +54,8 @@ public class CapersRepository {
      * @param text String of the text to be appended to the story
      */
     public static void writeStory(String text) {
-        File f = new File("Story.text");
+        setupPersistence();
+        File f = new File(".capers/story.txt");
         String newText;
         if (f.exists()) {
             String original = Utils.readContentsAsString(f);
