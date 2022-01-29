@@ -34,9 +34,10 @@ public class CapersRepository {
      */
     public static void setupPersistence() {
         // TODO
-        File f1 = new File(".capers");
+        //File f1 = new File(".capers");
+        File f1 = CAPERS_FOLDER;
         f1.mkdir();
-        File f = new File(".capers/story.txt");
+        File f = Utils.join(CAPERS_FOLDER, "story.txt");
         if (!f.exists()){
             try {
                 f.createNewFile();
@@ -55,7 +56,7 @@ public class CapersRepository {
      */
     public static void writeStory(String text) {
         setupPersistence();
-        File f = new File(".capers/story.txt");
+        File f = Utils.join(CAPERS_FOLDER, "story.txt");
         String newText;
         if (f.exists()) {
             String original = Utils.readContentsAsString(f);
