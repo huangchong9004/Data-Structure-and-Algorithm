@@ -90,5 +90,6 @@ public class CapersRepository {
         // TODO
         Dog m = Dog.fromFile(name);
         m.haveBirthday();
+        m.saveDog();
     }
 }
