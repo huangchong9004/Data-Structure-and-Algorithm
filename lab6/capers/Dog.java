@@ -45,7 +45,7 @@ public class Dog implements Serializable { // TODO
         Dog m;
         File inFile = Utils.join(DOG_FOLDER, name);
         m = Utils.readObject(inFile, Dog.class);
-        return null;
+        return m;
     }
 
     /**

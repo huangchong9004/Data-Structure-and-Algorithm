@@ -1,2 +1,4 @@
 How are you
 What can I do for you
+How are you
+How old are you?
